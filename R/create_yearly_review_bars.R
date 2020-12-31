@@ -11,8 +11,8 @@ episode_data <- read_csv("data/episode_plays_2020.csv")
 # Display barchart of plays -----------------------------------------------
 
 episode_data %>%
-  mutate(title = sapply(EpisodeTitle,
-                        function(x) unlist(str_split(x, pattern = " with "))[1]),
+  mutate(# Add new line spacing to episode title:
+         title = str_replace(EpisodeTitle, " with ", "\nwith "),
          title = fct_reorder(title, Plays),
          # Add a Greg indicator 
          with_greg = ifelse(str_detect(EpisodeTitle, "Greg"), "Yes", "No")) %>%
