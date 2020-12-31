@@ -18,7 +18,8 @@ episode_data %>%
          with_greg = ifelse(str_detect(EpisodeTitle, "Greg"), "Yes", "No")) %>%
   ggplot(aes(x = title, y = Plays, fill = with_greg)) +
   geom_bar(stat = "identity") +
-  labs(x = "Episode", fill = "Featuring Gregory J. Matthews?") +
+  labs(x = "Episode title", fill = "Featuring Gregory J. Matthews?",
+       y = "Number of plays in 2020") +
   ggthemes::scale_fill_colorblind() +
   theme_bw() +
   coord_flip() +
